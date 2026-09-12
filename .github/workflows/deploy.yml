@@ -1,0 +1,14 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的推送，如果是 master 分支请修改这里
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Deploy Hook
+        run: |
+          curl -X POST "你的CLOUDFLARE_DEPLOY_HOOK_URL"
