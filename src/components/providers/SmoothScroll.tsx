@@ -2,10 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/motion";
 
 interface LenisContextValue {
   lenis: Lenis | null;
@@ -22,11 +19,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const rafCallbackRef = useRef<((time: number) => void) | null>(null);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion()) {
       return;
     }
 

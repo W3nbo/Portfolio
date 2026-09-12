@@ -1,6 +1,7 @@
 "use client";
 
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { pillars } from "@/data";
 
 export function Philosophy() {
@@ -8,12 +9,11 @@ export function Philosophy() {
     <section id="philosophy" className="relative px-6 py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal animation="blurIn" className="mb-16 md:mb-24">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-apple-muted">
-            Product Philosophy
-          </p>
-          <blockquote className="max-w-4xl text-2xl font-medium leading-snug tracking-tight text-apple-text md:text-4xl">
-            &ldquo;好的产品不是功能更多，而是让用户更快抵达目标。AI 是加速器，不是目的。&rdquo;
-          </blockquote>
+          <SectionHeading eyebrow="Product Philosophy">
+            <blockquote className="max-w-4xl text-2xl font-medium leading-snug tracking-tight text-apple-text md:text-4xl">
+              &ldquo;好的产品不是功能更多，而是让用户更快抵达目标。AI 是加速器，不是目的。&rdquo;
+            </blockquote>
+          </SectionHeading>
         </ScrollReveal>
 
         <div className="grid gap-6 md:grid-cols-3">

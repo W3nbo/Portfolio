@@ -1,22 +1,16 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, prefersReducedMotion } from "@/lib/motion";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { timeline } from "@/data";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function Timeline() {
   const lineRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       if (lineRef.current) {
@@ -57,12 +51,11 @@ export function Timeline() {
     <section id="timeline" className="relative px-6 py-24 md:py-32">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 md:mb-24">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-apple-muted">
-            Experience
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-apple-text md:text-5xl">
-            每一步，都指向更复杂的问题。
-          </h2>
+          <SectionHeading eyebrow="Experience">
+            <h2 className="text-3xl font-semibold tracking-tight text-apple-text md:text-5xl">
+              每一步，都指向更复杂的问题。
+            </h2>
+          </SectionHeading>
         </div>
 
         <div className="relative">

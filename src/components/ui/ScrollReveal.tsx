@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef, useLayoutEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/motion";
 
 type AnimationType =
   | "fadeUp"
@@ -48,11 +45,7 @@ export function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion()) {
       return; // let CSS handle everything
     }
 

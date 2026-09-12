@@ -22,7 +22,6 @@ A minimalist, high-performance personal brand portfolio for a product manager.
 - Hamburger-to-close menu with clip-path full-screen overlay
 - Ripple-effect magnetic buttons
 - Spring-physics back-to-top button
-- Skill constellation visualization
 - Reduced-motion support
 
 ## Getting Started

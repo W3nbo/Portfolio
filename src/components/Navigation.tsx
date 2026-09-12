@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuButton } from "@/components/ui/MenuButton";
+import { profile } from "@/data";
 
 const navLinks = [
   { label: "作品", href: "#works" },
@@ -99,7 +100,7 @@ export function Navigation() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="#hero" className="text-lg font-semibold text-apple-text">
-            W3nbo Xu
+            {profile.name}
           </a>
 
           <nav className="hidden items-center gap-8 md:flex">

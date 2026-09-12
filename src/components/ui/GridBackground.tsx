@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 
 /**
  * A subtle flowing grid background rendered on canvas.
@@ -20,9 +21,7 @@ export function GridBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const prefersReduced = prefersReducedMotion();
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let width = window.innerWidth;
@@ -47,7 +46,7 @@ export function GridBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      if (!prefersReducedMotion) {
+      if (!prefersReduced) {
         time += 0.003;
         offset = (offset + 0.15) % cellSize;
       }
